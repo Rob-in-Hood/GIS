@@ -1,0 +1,56 @@
+{
+	"env": {
+		"browser": true,
+		"es2021": true
+	},
+	"extends": [
+		"eslint:recommended",
+		"plugin:react/recommended",
+		"plugin:react/jsx-runtime",
+		"plugin:react-hooks/recommended",
+		"plugin:import/recommended",
+		"plugin:@typescript-eslint/recommended",
+		"react-app",
+		"prettier",
+		"plugin:import/errors",
+		"plugin:import/warnings",
+		"plugin:import/typescript"
+	],
+	"parser": "@typescript-eslint/parser",
+	"parserOptions": {
+		"ecmaFeatures": {
+			"jsx": true
+		},
+		"ecmaVersion": "latest",
+		"sourceType": "module"
+	},
+	"plugins": ["react", "@typescript-eslint"],
+	"rules": {
+		"react/jsx-filename-extension": [
+			2,
+			{ "extensions": [".js", ".jsx", ".ts", ".tsx"] }
+		],
+		"@typescript-eslint/no-var-requires": 0,
+		"import/prefer-default-export": "off",
+		"react/prop-types": "off"
+	},
+	"settings": {
+		"import/resolver": {
+			"typescript": {},
+			"node": {
+				"extensions": [".js", ".jsx", ".ts", ".tsx"],
+				"paths": ["node_modules/", "node_modules/@types"]
+			},
+			"alias": {
+				"map": [
+					["@assets", "./src/assets"],
+					["@components", "./src/components"],
+					["@containers", "./src/containers"],
+					["@core", "./src/core"],
+					["@pages", "./src/pages"],
+					["@routes", "./src/routes"]
+				]
+			}
+		}
+	}
+}

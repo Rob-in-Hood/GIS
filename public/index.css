@@ -1,0 +1,11 @@
+@font-face {
+	font-family: 'Jura';
+	src: local('Jura'),
+		url('../src/assets/fonts/Jura/Jura-VariableFont_wght.ttf')
+			format('truetype');
+}
+
+body {
+	margin: 0;
+	overflow: hidden;
+}
