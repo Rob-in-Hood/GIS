@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useSelector } from 'react-redux';
 
 import 'leaflet/dist/leaflet.css';
@@ -8,17 +8,35 @@ import 'leaflet-providers';
 import { selectProvider } from '@core/store/slices/mapSlice';
 
 import { MapContainer } from '@containers/mapContainer/MapContainer';
+import { LatLng } from '@components/ordinary/latLng/latLng';
 
 export const Map = () => {
 	const mapRef = useRef(null);
 	const provider = useSelector(selectProvider);
-	let curLayer: any = null;
-	let map: any = null;
+	let curLayer = null;
+	let map = null;
+	let timerId = null;
+
+	const [mouseCoords, setMouseCoords] = useState({});
 
 	const setMapLayer = () => {
 		curLayer = L.tileLayer.provider(provider);
 		curLayer.addTo(map);
 		curLayer.setZIndex(1);
+	};
+
+	const mouseMoveDebouncing = (event) => {
+		clearTimeout(timerId);
+		timerId = setTimeout(() => mouseMove(event), 7);
+	};
+
+	const mouseMove = (event) => {
+		setMouseCoords(event.latlng);
+	};
+
+	const mouseOut = () => {
+		clearTimeout(timerId);
+		setMouseCoords({});
 	};
 
 	const setWeatherLayer = () => {
@@ -50,7 +68,21 @@ export const Map = () => {
 			northEast = L.latLng(85, 191);
 		const bounds = L.latLngBounds(southWest, northEast);
 		map.setMaxBounds(bounds);
-	});
 
-	return <MapContainer id='map' ref={mapRef}></MapContainer>;
+		map.on('mousemove', mouseMoveDebouncing);
+		map.on('mouseout', mouseOut);
+		return () => {
+			map.off('mousemove', mouseMoveDebouncing);
+			map.off('mouseout', mouseOut);
+		};
+	}, []);
+
+	return (
+		<>
+			<MapContainer id='map' ref={mapRef}></MapContainer>
+			{mouseCoords.lat && (
+				<LatLng lat={mouseCoords.lat} lng={mouseCoords.lng}></LatLng>
+			)}
+		</>
+	);
 };

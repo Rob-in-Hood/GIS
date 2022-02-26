@@ -20,7 +20,7 @@ export const theme = {
 	},
 };
 
-const Theme = ({ children }: any) => (
+const Theme = ({ children }) => (
 	<ThemeProvider theme={theme}>{children}</ThemeProvider>
 );
 
