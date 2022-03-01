@@ -1,11 +1,29 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
+import styled from 'styled-components';
 
 import * as formats from '@core/constants/latLngFormats';
 
 import { selectLatLngFormat } from '@core/store/slices/mapSlice';
 
 import { LatLngContainer } from '@containers/latLngContainer/latLngContainer';
+
+const LatLngDiv = styled.div`
+	position: absolute;
+	z-index: 2;
+	right: 6px;
+
+	pointer-events: none;
+
+	&.up {
+		bottom: ${(props) => Number(props.theme.fixedHeights.footer) + 6}px;
+		transition: all 1s;
+	}
+	&.down {
+		bottom: 6px;
+		transition: all 1s;
+	}
+`;
 
 export const LatLng = (props) => {
 	const format = useSelector(selectLatLngFormat);
@@ -23,14 +41,18 @@ export const LatLng = (props) => {
 	};
 
 	return (
-		<LatLngContainer>
-			{format === formats.DECIMAL
-				? props.lat?.toFixed(4)
-				: convertToDms(props.lat, false)}
-			,{' '}
-			{format === formats.DECIMAL
-				? props.lng?.toFixed(4)
-				: convertToDms(props.lng, true)}
-		</LatLngContainer>
+		<LatLngDiv className={props.className}>
+			{props.lat && (
+				<LatLngContainer>
+					{format === formats.DECIMAL
+						? props.lat?.toFixed(4)
+						: convertToDms(props.lat, false)}
+					,{' '}
+					{format === formats.DECIMAL
+						? props.lng?.toFixed(4)
+						: convertToDms(props.lng, true)}
+				</LatLngContainer>
+			)}
+		</LatLngDiv>
 	);
 };

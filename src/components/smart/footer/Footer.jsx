@@ -1,10 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 
-import { changeLatLngFormat } from '@core/store/slices/mapSlice';
+import {
+	changeLatLngFormat,
+	changeMapControlsClass,
+} from '@core/store/slices/mapSlice';
 
 import * as hFClasses from '@core/constants/headerFooterClasses';
 import * as lLFormats from '@core/constants/latLngFormats';
+import * as mCClasses from '@core/constants/mapControlsClasses';
 
 import styled from 'styled-components';
 import { theme } from '@core/theme/theme';
@@ -39,9 +43,11 @@ export const Footer = (props) => {
 
 	const closeFooter = () => {
 		setClass(hFClasses.CLOSED);
+		dispatch(changeMapControlsClass(mCClasses.DOWN));
 	};
 	const openFooter = () => {
 		setClass(hFClasses.OPENED);
+		dispatch(changeMapControlsClass(mCClasses.UP));
 	};
 
 	const setDecimalFormat = () => {

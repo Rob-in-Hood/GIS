@@ -5,7 +5,10 @@ import 'leaflet/dist/leaflet.css';
 import L from 'leaflet';
 import 'leaflet-providers';
 
-import { selectProvider } from '@core/store/slices/mapSlice';
+import {
+	selectMapControlsClass,
+	selectProvider,
+} from '@core/store/slices/mapSlice';
 
 import { MapContainer } from '@containers/mapContainer/MapContainer';
 import { LatLng } from '@components/ordinary/latLng/latLng';
@@ -13,6 +16,7 @@ import { LatLng } from '@components/ordinary/latLng/latLng';
 export const Map = () => {
 	const mapRef = useRef(null);
 	const provider = useSelector(selectProvider);
+	const mapControlClass = useSelector(selectMapControlsClass);
 	let curLayer = null;
 	let map = null;
 	let timerId = null;
@@ -75,10 +79,16 @@ export const Map = () => {
 
 	return (
 		<>
-			<MapContainer id='map' ref={mapRef}></MapContainer>
-			{mouseCoords.lat && (
-				<LatLng lat={mouseCoords.lat} lng={mouseCoords.lng}></LatLng>
-			)}
+			<MapContainer
+				id='map'
+				ref={mapRef}
+				className={mapControlClass}
+			></MapContainer>
+			<LatLng
+				className={mapControlClass}
+				lat={mouseCoords.lat}
+				lng={mouseCoords.lng}
+			></LatLng>
 		</>
 	);
 };
