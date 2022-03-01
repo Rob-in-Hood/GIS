@@ -63,8 +63,8 @@ export const ToggleButton = (props) => {
 	};
 
 	return (
-		<Toggle className={`${onOffClass}`}>
-			<Switch className={`${onOffClass}`} onClick={onClick}>
+		<Toggle className={`${onOffClass}`} onClick={onClick}>
+			<Switch className={`${onOffClass}`}>
 				<FontAwesomeIcon
 					icon={onOffClass === classes.OFF ? props.offIcon : props.onIcon}
 				></FontAwesomeIcon>

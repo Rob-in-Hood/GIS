@@ -2,7 +2,7 @@ import React from 'react';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-import { Button } from '../button/Button';
+import { Button } from '@components/simpleUI/button/Button';
 
 export const IconButton = (props) => {
 	return (

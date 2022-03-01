@@ -14,8 +14,8 @@ import styled from 'styled-components';
 import { theme } from '@core/theme/theme';
 
 import { StickyCloseableContainer } from '@containers/stickyCloseableContainer/StickyCloseableContainer';
-import { IconButton } from '@components/ui/iconButton/IconButton';
-import { ToggleButton } from '@components/simple/toggleButton/ToggleButton';
+import { IconButton } from '@components/simpleUI/iconButton/IconButton';
+import { ToggleButton } from '@components/simpleUI/toggleButton/ToggleButton';
 
 import {
 	faAngleDown,

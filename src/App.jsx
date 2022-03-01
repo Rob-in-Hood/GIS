@@ -2,10 +2,10 @@ import React from 'react';
 
 import Theme from '@core/theme/theme';
 
-import { AppContainer } from '@containers/appContainer/AppContainer';
-import { Header } from '@components/smart/header/Header';
-import { Map } from '@components/smart/map/Map';
-import { Footer } from '@components/smart/footer/Footer';
+import { AppContainer } from './App.styled';
+import { Header } from '@components/header/Header';
+import { Map } from '@components/map/Map';
+import { Footer } from '@components/footer/Footer';
 
 const App = () => {
 	return (

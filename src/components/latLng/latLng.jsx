@@ -6,24 +6,10 @@ import * as formats from '@core/constants/latLngFormats';
 
 import { selectLatLngFormat } from '@core/store/slices/mapSlice';
 
-import { LatLngContainer } from '@containers/latLngContainer/latLngContainer';
-
-const LatLngDiv = styled.div`
-	position: absolute;
-	z-index: 2;
-	right: 6px;
-
-	pointer-events: none;
-
-	&.up {
-		bottom: ${(props) => Number(props.theme.fixedHeights.footer) + 6}px;
-		transition: all 1s;
-	}
-	&.down {
-		bottom: 6px;
-		transition: all 1s;
-	}
-`;
+import {
+	LatLngContainer,
+	LatLngComponent,
+} from '@components/latLng/latLng.styled';
 
 export const LatLng = (props) => {
 	const format = useSelector(selectLatLngFormat);
@@ -41,9 +27,9 @@ export const LatLng = (props) => {
 	};
 
 	return (
-		<LatLngDiv className={props.className}>
+		<LatLngContainer className={props.className}>
 			{props.lat && (
-				<LatLngContainer>
+				<LatLngComponent>
 					{format === formats.DECIMAL
 						? props.lat?.toFixed(4)
 						: convertToDms(props.lat, false)}
@@ -51,8 +37,8 @@ export const LatLng = (props) => {
 					{format === formats.DECIMAL
 						? props.lng?.toFixed(4)
 						: convertToDms(props.lng, true)}
-				</LatLngContainer>
+				</LatLngComponent>
 			)}
-		</LatLngDiv>
+		</LatLngContainer>
 	);
 };

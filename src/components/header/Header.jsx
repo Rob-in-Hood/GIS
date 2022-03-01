@@ -6,8 +6,8 @@ import styled from 'styled-components';
 import { theme } from '@core/theme/theme';
 
 import { StickyCloseableContainer } from '@containers/stickyCloseableContainer/StickyCloseableContainer';
-import { IconTextButton } from '@components/ui/iconTextButton/IconTextButton';
-import { IconButton } from '@components/ui/iconButton/IconButton';
+import { IconTextButton } from '@components/simpleUI/iconTextButton/IconTextButton';
+import { IconButton } from '@components/simpleUI/iconButton/IconButton';
 
 import {
 	faScrewdriverWrench,

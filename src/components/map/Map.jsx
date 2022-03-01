@@ -10,8 +10,8 @@ import {
 	selectProvider,
 } from '@core/store/slices/mapSlice';
 
-import { MapContainer } from '@containers/mapContainer/MapContainer';
-import { LatLng } from '@components/ordinary/latLng/latLng';
+import { MapContainer } from '@components/map/Map.styled';
+import { LatLng } from '@components/latLng/latLng';
 
 export const Map = () => {
 	const mapRef = useRef(null);
