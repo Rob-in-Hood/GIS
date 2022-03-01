@@ -24,27 +24,23 @@ export const Map = () => {
 		curLayer.addTo(map);
 		curLayer.setZIndex(1);
 	};
+	const setWeatherLayer = () => {
+		//
+	};
+	const removeLayer = () => {
+		map.removeLayer(curLayer);
+	};
 
 	const mouseMoveDebouncing = (event) => {
 		clearTimeout(timerId);
 		timerId = setTimeout(() => mouseMove(event), 7);
 	};
-
 	const mouseMove = (event) => {
 		setMouseCoords(event.latlng);
 	};
-
 	const mouseOut = () => {
 		clearTimeout(timerId);
 		setMouseCoords({});
-	};
-
-	const setWeatherLayer = () => {
-		//
-	};
-
-	const removeLayer = () => {
-		map.removeLayer(curLayer);
 	};
 
 	useEffect(() => {

@@ -3,8 +3,8 @@ import styled from 'styled-components';
 export const LatLngContainer = styled.div`
 	position: absolute;
 	z-index: 2;
-	right: 5px;
-	bottom: ${(props) => Number(props.theme.fixedHeights.footer) + 5}px;
+	right: 6px;
+	bottom: ${(props) => Number(props.theme.fixedHeights.footer) + 6}px;
 	width: auto;
 	padding: 2px 4px;
 

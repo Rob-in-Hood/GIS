@@ -18,11 +18,13 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 
 const MiddleColumn = styled.div`
-	& *:nth-child(n) {
-		margin-right: 20px;
-	}
-	& *:last-child {
-		margin-right: 0;
+	& * {
+		&:nth-child(n) {
+			margin-right: 20px;
+		}
+		&:last-child {
+			margin-right: 0;
+		}
 	}
 `;
 

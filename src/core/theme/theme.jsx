@@ -4,7 +4,7 @@ import { ThemeProvider } from 'styled-components';
 export const theme = {
 	colors: {
 		primary: `white`,
-		secondary: `#EDE8F2`,
+		secondary: `#E5DEEC`,
 		accent: `black`,
 	},
 	fonts: ['sans-serif', 'Jura'],

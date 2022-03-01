@@ -1,16 +1,40 @@
 import React, { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
+
+import { changeLatLngFormat } from '@core/store/slices/mapSlice';
 
 import * as hFClasses from '@core/constants/headerFooterClasses';
+import * as lLFormats from '@core/constants/latLngFormats';
 
 import styled from 'styled-components';
 import { theme } from '@core/theme/theme';
 
 import { StickyCloseableContainer } from '@containers/stickyCloseableContainer/StickyCloseableContainer';
 import { IconButton } from '@components/ui/iconButton/IconButton';
+import { ToggleButton } from '@components/simple/toggleButton/ToggleButton';
 
-import { faAngleDown } from '@fortawesome/free-solid-svg-icons';
+import {
+	faAngleDown,
+	faExpand,
+	faCompress,
+	faGlobe,
+} from '@fortawesome/free-solid-svg-icons';
+
+const RightColumn = styled.div`
+	& div {
+		display: inline-flex;
+
+		&:nth-child(n) {
+			margin-right: 10px;
+		}
+		&:last-child {
+			margin-right: 0;
+		}
+	}
+`;
 
 export const Footer = (props) => {
+	const dispatch = useDispatch();
 	let [footerClass, setClass] = useState(hFClasses.OPENED);
 
 	const closeFooter = () => {
@@ -18,6 +42,36 @@ export const Footer = (props) => {
 	};
 	const openFooter = () => {
 		setClass(hFClasses.OPENED);
+	};
+
+	const setDecimalFormat = () => {
+		dispatch(changeLatLngFormat(lLFormats.DECIMAL));
+	};
+	const setDMSFormat = () => {
+		dispatch(changeLatLngFormat(lLFormats.DMS));
+	};
+
+	const setFullScreenMode = () => {
+		if (document.body.requestFullscreen) {
+			document.body.requestFullscreen();
+		} else if (document.body.mozRequestFullScreen) {
+			document.body.mozRequestFullScreen(); // Firefox
+		} else if (document.body.webkitRequestFullscreen) {
+			document.body.webkitRequestFullscreen(); // Chrome, Safari and Opera
+		} else if (document.body.msRequestFullscreen) {
+			document.body.msRequestFullscreen(); //IE/Edge
+		}
+	};
+	const exitFullScreenMode = () => {
+		if (document.exitFullscreen) {
+			document.exitFullscreen();
+		} else if (document.mozCancelFullScreen) {
+			document.mozCancelFullScreen(); // Firefox
+		} else if (document.webkitExitFullscreen) {
+			document.webkitExitFullscreen(); // Chrome, Safari and Opera
+		} else if (document.msExitFullscreen) {
+			document.msExitFullscreen(); //IE/Edge
+		}
 	};
 
 	const onHover = () => {
@@ -37,6 +91,20 @@ export const Footer = (props) => {
 				className='middle-column'
 				onClick={closeFooter}
 			></IconButton>
+			<RightColumn className='right-column'>
+				<ToggleButton
+					offIcon={faGlobe}
+					onIcon={faGlobe}
+					offFunc={setDecimalFormat}
+					onFunc={setDMSFormat}
+				></ToggleButton>
+				<ToggleButton
+					offIcon={faExpand}
+					onIcon={faCompress}
+					offFunc={exitFullScreenMode}
+					onFunc={setFullScreenMode}
+				></ToggleButton>
+			</RightColumn>
 		</StickyCloseableContainer>
 	);
 };
