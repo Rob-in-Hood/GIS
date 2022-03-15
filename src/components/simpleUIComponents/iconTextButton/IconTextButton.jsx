@@ -1,13 +1,9 @@
 import React from 'react';
-import styled from 'styled-components';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-import { Button } from '@components/simpleUI/button/Button';
-
-const Text = styled.span`
-	margin-left: 4px;
-`;
+import { Text } from './IconTextButton.styled';
+import { Button } from '@components/simpleUIComponents/button/Button';
 
 export const IconTextButton = (props) => {
 	return (

@@ -1,13 +1,18 @@
 import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
 
-import * as hFClasses from '@core/constants/headerFooterClasses';
+import { selectMapBottomControlsClass } from '@core/store/slices/mapSlice';
+
+import * as mBCClasses from '@core/constants/mapBottomControlsClasses';
 
 import styled from 'styled-components';
 import { theme } from '@core/theme/theme';
 
-import { StickyCloseableContainer } from '@containers/stickyCloseableContainer/StickyCloseableContainer';
-import { IconTextButton } from '@components/simpleUI/iconTextButton/IconTextButton';
-import { IconButton } from '@components/simpleUI/iconButton/IconButton';
+import { HeaderFooterContainer } from '@containers/HeaderFooterContainer';
+import { ToolsPanel } from '@components/singleUseComponents/toolsPanel/ToolsPanel';
+import { LayersPanel } from '@components/singleUseComponents/layersPanel/LayersPanel';
+import { IconTextButton } from '@components/simpleUIComponents/iconTextButton/IconTextButton';
+import { IconButton } from '@components/simpleUIComponents/iconButton/IconButton';
 
 import {
 	faScrewdriverWrench,
@@ -29,47 +34,94 @@ const MiddleColumn = styled.div`
 `;
 
 export const Header = () => {
-	let [headerClass, setClass] = useState(hFClasses.OPENED);
+	let [isHeaderOpened, setIsHeaderOpened] = useState(true);
+	let [isLayersPanelOpened, setIsLayersPanelOpened] = useState(false);
+	let [isToolsPanelOpened, setIsToolsPanelOpened] = useState(false);
+
+	const mapBottomControlsClass = useSelector(selectMapBottomControlsClass);
+	const maxPanelsHeight = (theme.fixedHeights.footer + 1) * 2;
+	const minPanelsHeight = theme.fixedHeights.footer + 1;
 
 	const closeHeader = () => {
-		setClass(hFClasses.CLOSED);
+		setIsLayersPanelOpened(false);
+		setIsToolsPanelOpened(false);
+		setTimeout(
+			() => {
+				setIsHeaderOpened(false);
+			},
+			isLayersPanelOpened || isToolsPanelOpened
+				? theme.transitionDelay * 1000
+				: 0,
+		);
 	};
 	const openHeader = () => {
-		setClass(hFClasses.OPENED);
+		setIsHeaderOpened(true);
+	};
+	const onHoverHeader = () => {
+		if (isHeaderOpened === false) openHeader();
 	};
 
-	const onHover = () => {
-		if (headerClass === hFClasses.CLOSED) openHeader();
+	const onClickLayersBtn = () => {
+		setIsLayersPanelOpened(!isLayersPanelOpened);
+	};
+	const onClickToolsBtn = () => {
+		setIsToolsPanelOpened(!isToolsPanelOpened);
 	};
 
 	return (
-		<StickyCloseableContainer
-			topSticky={true}
-			height={theme.fixedHeights.header}
-			className={headerClass}
-			onMouseEnter={onHover}
-		>
-			<IconTextButton
-				text='Инструменты'
-				icon={faScrewdriverWrench}
-				bordered={true}
-				className='left-column'
-			/>
-			<MiddleColumn className='middle-column'>
-				<IconButton icon={faUser} bordered={true}></IconButton>
-				<IconButton
-					icon={faAngleUp}
-					bordered={false}
-					onClick={closeHeader}
-				></IconButton>
-				<IconButton icon={faUpload} bordered={true}></IconButton>
-			</MiddleColumn>
-			<IconTextButton
-				text='Слои'
-				icon={faLayerGroup}
-				bordered={true}
-				className='right-column'
-			/>
-		</StickyCloseableContainer>
+		<>
+			<HeaderFooterContainer
+				topSticky={true}
+				height={theme.fixedHeights.header}
+				openRequest={isHeaderOpened}
+				onMouseEnter={onHoverHeader}
+			>
+				<IconTextButton
+					text='Инструменты'
+					icon={faScrewdriverWrench}
+					bordered={true}
+					className='left-column'
+					onClick={onClickToolsBtn}
+				/>
+				<MiddleColumn className='middle-column'>
+					<IconButton icon={faUser} bordered={true}></IconButton>
+					<IconButton
+						icon={faAngleUp}
+						bordered={false}
+						onClick={closeHeader}
+					></IconButton>
+					<IconButton icon={faUpload} bordered={true}></IconButton>
+				</MiddleColumn>
+				<IconTextButton
+					text='Слои'
+					icon={faLayerGroup}
+					bordered={true}
+					className='right-column'
+					onClick={onClickLayersBtn}
+				/>
+			</HeaderFooterContainer>
+			<ToolsPanel
+				width={theme.fixedWidths.toolsPanel}
+				top={theme.fixedHeights.header}
+				isToolsPanelOpened={isToolsPanelOpened}
+				heightSubtrahend={
+					mapBottomControlsClass === mBCClasses.UP
+						? maxPanelsHeight
+						: minPanelsHeight
+				}
+				className={mapBottomControlsClass}
+			></ToolsPanel>
+			<LayersPanel
+				width={theme.fixedWidths.layersPanel}
+				top={theme.fixedHeights.header}
+				isLayersPanelOpened={isLayersPanelOpened}
+				heightSubtrahend={
+					mapBottomControlsClass === mBCClasses.UP
+						? maxPanelsHeight
+						: minPanelsHeight
+				}
+				className={mapBottomControlsClass}
+			></LayersPanel>
+		</>
 	);
 };

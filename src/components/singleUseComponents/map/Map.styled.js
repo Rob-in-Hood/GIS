@@ -9,14 +9,12 @@ export const MapContainer = styled.div`
 	& .leaflet-control-container {
 		& .leaflet-bottom {
 			bottom: ${(props) =>
-				props.className === 'up'
-					? Number(props.theme.fixedHeights.footer) + 1
-					: 1}px;
-			transition: all 1s;
+				props.className === 'up' ? props.theme.fixedHeights.footer + 1 : 1}px;
+			transition: all ${(props) => props.theme.transitionDelay}s;
 		}
 		& .leaflet-left {
 			left: 1px;
-			transition: all 1s;
+			transition: all ${(props) => props.theme.transitionDelay}s;
 		}
 	}
 `;

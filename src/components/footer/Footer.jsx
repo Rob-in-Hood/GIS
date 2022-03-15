@@ -3,19 +3,19 @@ import { useDispatch } from 'react-redux';
 
 import {
 	changeLatLngFormat,
-	changeMapControlsClass,
+	changeMapBottomControlsClass,
 } from '@core/store/slices/mapSlice';
 
-import * as hFClasses from '@core/constants/headerFooterClasses';
+import * as cCClasses from '@core/constants/closeablePanelsClasses';
 import * as lLFormats from '@core/constants/latLngFormats';
-import * as mCClasses from '@core/constants/mapControlsClasses';
+import * as mBCClasses from '@core/constants/mapBottomControlsClasses';
 
 import styled from 'styled-components';
 import { theme } from '@core/theme/theme';
 
-import { StickyCloseableContainer } from '@containers/stickyCloseableContainer/StickyCloseableContainer';
-import { IconButton } from '@components/simpleUI/iconButton/IconButton';
-import { ToggleButton } from '@components/simpleUI/toggleButton/ToggleButton';
+import { HeaderFooterContainer } from '@containers/HeaderFooterContainer';
+import { IconButton } from '@components/simpleUIComponents/iconButton/IconButton';
+import { ToggleButton } from '@components/simpleUIComponents/toggleButton/ToggleButton';
 
 import {
 	faAngleDown,
@@ -39,15 +39,20 @@ const RightColumn = styled.div`
 
 export const Footer = (props) => {
 	const dispatch = useDispatch();
-	let [footerClass, setClass] = useState(hFClasses.OPENED);
+	let [isFooterOpened, setIsFooterOpened] = useState(true);
 
 	const closeFooter = () => {
-		setClass(hFClasses.CLOSED);
-		dispatch(changeMapControlsClass(mCClasses.DOWN));
+		setIsFooterOpened(false);
 	};
 	const openFooter = () => {
-		setClass(hFClasses.OPENED);
-		dispatch(changeMapControlsClass(mCClasses.UP));
+		setIsFooterOpened(true);
+	};
+
+	const setMBControlsUP = () => {
+		dispatch(changeMapBottomControlsClass(mBCClasses.UP));
+	};
+	const setMBControlsDOWN = () => {
+		dispatch(changeMapBottomControlsClass(mBCClasses.DOWN));
 	};
 
 	const setDecimalFormat = () => {
@@ -81,14 +86,16 @@ export const Footer = (props) => {
 	};
 
 	const onHover = () => {
-		if (footerClass === hFClasses.CLOSED) openFooter();
+		if (isFooterOpened === false) openFooter();
 	};
 
 	return (
-		<StickyCloseableContainer
+		<HeaderFooterContainer
 			bottomSticky={true}
 			height={theme.fixedHeights.footer}
-			className={footerClass}
+			openRequest={isFooterOpened}
+			openFunc={setMBControlsUP}
+			closeFunc={setMBControlsDOWN}
 			onMouseEnter={onHover}
 		>
 			<IconButton
@@ -111,6 +118,6 @@ export const Footer = (props) => {
 					onFunc={setFullScreenMode}
 				></ToggleButton>
 			</RightColumn>
-		</StickyCloseableContainer>
+		</HeaderFooterContainer>
 	);
 };

@@ -8,12 +8,12 @@ export const LatLngContainer = styled.div`
 	pointer-events: none;
 
 	&.up {
-		bottom: ${(props) => Number(props.theme.fixedHeights.footer) + 6}px;
-		transition: all 1s;
+		bottom: ${(props) => props.theme.fixedHeights.footer + 6}px;
+		transition: all ${(props) => props.theme.transitionDelay}s;
 	}
 	&.down {
 		bottom: 6px;
-		transition: all 1s;
+		transition: all ${(props) => props.theme.transitionDelay}s;
 	}
 `;
 

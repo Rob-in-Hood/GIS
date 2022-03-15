@@ -4,7 +4,7 @@ import Theme from '@core/theme/theme';
 
 import { AppContainer } from './App.styled';
 import { Header } from '@components/header/Header';
-import { Map } from '@components/map/Map';
+import { Map } from '@components/singleUseComponents/map/Map';
 import { Footer } from '@components/footer/Footer';
 
 const App = () => {
@@ -13,6 +13,9 @@ const App = () => {
 			<AppContainer>
 				<Header />
 				<Map />
+				<div
+					style={{ width: '100%', height: '100%', position: 'absolute' }}
+				></div>
 				<Footer />
 			</AppContainer>
 		</Theme>

@@ -6,17 +6,17 @@ import L from 'leaflet';
 import 'leaflet-providers';
 
 import {
-	selectMapControlsClass,
+	selectMapBottomControlsClass,
 	selectProvider,
 } from '@core/store/slices/mapSlice';
 
-import { MapContainer } from '@components/map/Map.styled';
-import { LatLng } from '@components/latLng/latLng';
+import { MapContainer } from './Map.styled';
+import { LatLng } from '@components/singleUseComponents/latLng/latLng';
 
 export const Map = () => {
 	const mapRef = useRef(null);
 	const provider = useSelector(selectProvider);
-	const mapControlClass = useSelector(selectMapControlsClass);
+	const mapControlClass = useSelector(selectMapBottomControlsClass);
 	let curLayer = null;
 	let map = null;
 	let timerId = null;
