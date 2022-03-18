@@ -17,7 +17,7 @@ export const ToolsPanel = (props) => {
 		},
 		{
 			name: 'Погода',
-			notCompleted: true,
+			notCompleted: false,
 			content: (
 				<ContentComponents.WeatherContent></ContentComponents.WeatherContent>
 			),

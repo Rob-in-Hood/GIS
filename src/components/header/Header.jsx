@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 
-import { selectMapBottomControlsClass } from '@core/store/slices/mapSlice';
+import { selectMapBottomControlsClass } from '@core/store/slices/mapBottomControlsSlice';
 
 import * as mBCClasses from '@core/constants/mapBottomControlsClasses';
 
-import styled from 'styled-components';
 import { theme } from '@core/theme/theme';
 
 import { HeaderFooterContainer } from '@containers/HeaderFooterContainer';
@@ -13,6 +12,7 @@ import { ToolsPanel } from '@components/singleUseComponents/toolsPanel/ToolsPane
 import { LayersPanel } from '@components/singleUseComponents/layersPanel/LayersPanel';
 import { IconTextButton } from '@components/simpleUIComponents/iconTextButton/IconTextButton';
 import { IconButton } from '@components/simpleUIComponents/iconButton/IconButton';
+import { MiddleColumn } from './Header.styled';
 
 import {
 	faScrewdriverWrench,
@@ -21,17 +21,6 @@ import {
 	faUpload,
 	faAngleUp,
 } from '@fortawesome/free-solid-svg-icons';
-
-const MiddleColumn = styled.div`
-	& * {
-		&:nth-child(n) {
-			margin-right: 20px;
-		}
-		&:last-child {
-			margin-right: 0;
-		}
-	}
-`;
 
 export const Header = () => {
 	let [isHeaderOpened, setIsHeaderOpened] = useState(true);

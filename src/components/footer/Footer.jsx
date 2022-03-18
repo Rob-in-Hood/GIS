@@ -4,18 +4,18 @@ import { useDispatch } from 'react-redux';
 import {
 	changeLatLngFormat,
 	changeMapBottomControlsClass,
-} from '@core/store/slices/mapSlice';
+} from '@core/store/slices/mapBottomControlsSlice';
 
 import * as cCClasses from '@core/constants/closeablePanelsClasses';
 import * as lLFormats from '@core/constants/latLngFormats';
 import * as mBCClasses from '@core/constants/mapBottomControlsClasses';
 
-import styled from 'styled-components';
 import { theme } from '@core/theme/theme';
 
 import { HeaderFooterContainer } from '@containers/HeaderFooterContainer';
 import { IconButton } from '@components/simpleUIComponents/iconButton/IconButton';
 import { ToggleButton } from '@components/simpleUIComponents/toggleButton/ToggleButton';
+import { RightColumn } from './Footer.styled';
 
 import {
 	faAngleDown,
@@ -23,19 +23,6 @@ import {
 	faCompress,
 	faGlobe,
 } from '@fortawesome/free-solid-svg-icons';
-
-const RightColumn = styled.div`
-	& div {
-		display: inline-flex;
-
-		&:nth-child(n) {
-			margin-right: 10px;
-		}
-		&:last-child {
-			margin-right: 0;
-		}
-	}
-`;
 
 export const Footer = (props) => {
 	const dispatch = useDispatch();

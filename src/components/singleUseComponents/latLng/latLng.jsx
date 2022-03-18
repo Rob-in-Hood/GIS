@@ -4,7 +4,7 @@ import styled from 'styled-components';
 
 import * as formats from '@core/constants/latLngFormats';
 
-import { selectLatLngFormat } from '@core/store/slices/mapSlice';
+import { selectLatLngFormat } from '@core/store/slices/mapBottomControlsSlice';
 
 import { LatLngContainer, LatLngComponent } from './latLng.styled';
 
