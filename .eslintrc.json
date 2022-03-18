@@ -9,14 +9,11 @@
 		"plugin:react/jsx-runtime",
 		"plugin:react-hooks/recommended",
 		"plugin:import/recommended",
-		"plugin:@typescript-eslint/recommended",
 		"react-app",
 		"prettier",
 		"plugin:import/errors",
-		"plugin:import/warnings",
-		"plugin:import/typescript"
+		"plugin:import/warnings"
 	],
-	"parser": "@typescript-eslint/parser",
 	"parserOptions": {
 		"ecmaFeatures": {
 			"jsx": true
@@ -24,21 +21,16 @@
 		"ecmaVersion": "latest",
 		"sourceType": "module"
 	},
-	"plugins": ["react", "@typescript-eslint"],
+	"plugins": ["react"],
 	"rules": {
-		"react/jsx-filename-extension": [
-			2,
-			{ "extensions": [".js", ".jsx", ".ts", ".tsx"] }
-		],
-		"@typescript-eslint/no-var-requires": 0,
+		"react/jsx-filename-extension": [2, { "extensions": [".js", ".jsx"] }],
 		"import/prefer-default-export": "off",
 		"react/prop-types": "off"
 	},
 	"settings": {
 		"import/resolver": {
-			"typescript": {},
 			"node": {
-				"extensions": [".js", ".jsx", ".ts", ".tsx"],
+				"extensions": [".js", ".jsx"],
 				"paths": ["node_modules/", "node_modules/@types"]
 			},
 			"alias": {
