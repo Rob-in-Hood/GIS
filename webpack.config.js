@@ -7,7 +7,7 @@ module.exports = {
 	module: {
 		rules: [
 			{
-				test: /\.[jt]sx?$/,
+				test: /\.jsx?$/,
 				loader: 'babel-loader',
 				exclude: /node_modules/,
 			},
@@ -18,7 +18,7 @@ module.exports = {
 		],
 	},
 	resolve: {
-		extensions: ['.tsx', '.ts', '.js', '.jsx'],
+		extensions: ['.js', '.jsx'],
 		alias: {
 			'@assets': path.resolve(__dirname, './src/assets'),
 			'@components': path.resolve(__dirname, './src/components'),
