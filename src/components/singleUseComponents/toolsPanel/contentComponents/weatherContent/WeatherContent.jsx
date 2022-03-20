@@ -12,7 +12,6 @@ import {
 	changeTempLayer,
 } from '@core/store/slices/weatherSlice';
 
-import * as providers from '@core/constants/mapProviders';
 import * as weatherData from '@core/constants/weatherData';
 
 import { ToggleButton } from '@components/simpleUIComponents/toggleButton/ToggleButton';

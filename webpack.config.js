@@ -7,13 +7,17 @@ module.exports = {
 	module: {
 		rules: [
 			{
-				test: /\.jsx?$/,
+				test: /\.[j]sx?$/,
 				loader: 'babel-loader',
 				exclude: /node_modules/,
 			},
 			{
 				test: /\.css$/,
 				use: ['style-loader', 'css-loader'],
+			},
+			{
+				test: /\.(jpe?g|png|svg)$/,
+				use: ['file-loader'],
 			},
 		],
 	},

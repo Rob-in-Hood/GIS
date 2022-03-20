@@ -31,9 +31,10 @@
 		"import/resolver": {
 			"node": {
 				"extensions": [".js", ".jsx"],
-				"paths": ["node_modules/", "node_modules/@types"]
+				"paths": ["node_modules/"]
 			},
 			"alias": {
+				"extensions": [".js", ".jsx"],
 				"map": [
 					["@assets", "./src/assets"],
 					["@components", "./src/components"],
