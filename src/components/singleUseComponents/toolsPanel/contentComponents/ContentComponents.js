@@ -1,5 +1,5 @@
 import { MapsContent } from './MapsContent';
-import { WeatherContent } from './WeatherContent';
+import { WeatherContent } from './weatherContent/WeatherContent';
 import { DownloadingContent } from './DownloadingContent';
 import { DrawingContent } from './DrawingContent';
 import { MeasuringContent } from './MeasuringContent';

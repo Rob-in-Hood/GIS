@@ -13,9 +13,6 @@ const App = () => {
 			<AppContainer>
 				<Header />
 				<Map />
-				<div
-					style={{ width: '100%', height: '100%', position: 'absolute' }}
-				></div>
 				<Footer />
 			</AppContainer>
 		</Theme>
