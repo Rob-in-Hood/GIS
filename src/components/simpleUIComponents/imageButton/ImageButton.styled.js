@@ -11,6 +11,7 @@ export const ImageButtonContainer = styled.button`
 	background-image: url(${(props) => props.backgroundImage});
 	background-position: center;
 	background-repeat: no-repeat;
+	background-size: contain;
 
 	font-size: ${(props) => props.theme.fontSizes.medium};
 
@@ -21,5 +22,6 @@ export const ImageButtonContainer = styled.button`
 	}
 	&:hover {
 		background-color: ${(props) => props.theme.colors.secondary};
+		background-blend-mode: multiply;
 	}
 `;

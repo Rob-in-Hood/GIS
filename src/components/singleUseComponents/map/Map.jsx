@@ -7,13 +7,7 @@ import 'leaflet-providers';
 
 import { theme } from '@core/theme/theme';
 
-import {
-	selectProvider,
-	selectMap,
-	selectLayer,
-	changeMap,
-	changeLayer,
-} from '@core/store/slices/mapSlice';
+import { selectMap, changeMap } from '@core/store/slices/mapSlice';
 import { selectMapBottomControlsClass } from '@core/store/slices/mapBottomControlsSlice';
 import {
 	selectWindLayer,
@@ -35,26 +29,9 @@ export const Map = () => {
 	const mapControlsClass = useSelector(selectMapBottomControlsClass);
 	const windLayer = useSelector(selectWindLayer);
 	const tempLayer = useSelector(selectTempLayer);
-	let provider = useSelector(selectProvider);
 	let map = useSelector(selectMap);
-	let curLayer = null;
-	const layer = useSelector(selectLayer);
 
 	let timerId = null;
-
-	const setMapLayer = () => {
-		if (map) {
-			if (curLayer) removeMapLayer();
-			curLayer = L.tileLayer.provider(provider);
-			curLayer.addTo(map);
-			curLayer.setZIndex(1);
-			//dispatch(changeLayer(curLayer));
-		}
-	};
-	const removeMapLayer = () => {
-		map.removeLayer(curLayer);
-	};
-	setMapLayer();
 
 	const mouseMoveDebouncing = (event) => {
 		clearTimeout(timerId);
@@ -80,9 +57,7 @@ export const Map = () => {
 			zoomControl: false,
 			doubleClickZoom: false,
 		});
-
 		map.setView(new L.LatLng(68, 33), 3);
-		setMapLayer();
 		L.control.scale({ metric: true, imperial: false }).addTo(map);
 
 		//ограничение карты
