@@ -71,7 +71,7 @@ export const WeatherContent = () => {
 
 	const setTempLayer = (value) => {
 		if (map) {
-			if (tempLayer) removeTempLayerLayer();
+			if (tempLayer) removeTempLayer();
 			if (value) {
 				tempLayer = L.tileLayer.provider(weatherData.TEMP_PROVIDER, {
 					apiKey: weatherData.OPENWEATERMAP_API_KEY,
@@ -86,7 +86,7 @@ export const WeatherContent = () => {
 		setTempOpacity(opacity);
 		if (tempLayer) tempLayer.setOpacity(opacity / 100);
 	};
-	const removeTempLayerLayer = () => {
+	const removeTempLayer = () => {
 		map.removeLayer(tempLayer);
 		tempLayer = null;
 		dispatch(changeTempLayer(tempLayer));
