@@ -59,6 +59,8 @@ export const Range = (props) => {
 			onMouseUp={onMouseUp}
 			onMouseDown={onMouseDown}
 			trackWidth={rangeTrackWidth}
+			data-tooltip={props.dataTooltip}
+			data-tooltip-location={props.dataTooltipLocation}
 		>
 			<RangeTrack ref={trackRef} trackWidth={rangeTrackWidth} />
 			<RangeButton diameter={rangeButtonDiameter} pos={pos} />

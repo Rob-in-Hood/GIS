@@ -14,10 +14,6 @@ export const ItemButton = styled.button`
 
 	&:hover {
 		background-color: ${(props) => props.theme.colors.secondary};
-
-		&.not-completed {
-			background: ${(props) => props.theme.notCompletedBackground};
-		}
 	}
 `;
 
@@ -39,6 +35,6 @@ export const ItemContent = styled.div`
 	&.active {
 		max-height: calc(100vh - ${(props) => props.accHeightSubtrahend}px);
 
-		overflow: auto;
+		overflow: inherit;
 	}
 `;

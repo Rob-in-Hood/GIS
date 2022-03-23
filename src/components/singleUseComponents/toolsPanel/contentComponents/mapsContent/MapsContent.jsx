@@ -119,6 +119,7 @@ export const MapsContent = () => {
 					width={btnWidth}
 					height={btnWidth}
 					className={id === activeId ? 'active' : ''}
+					data-tooltip={item.name}
 				></ImageButton>
 			))}
 		</MapsContentContainer>

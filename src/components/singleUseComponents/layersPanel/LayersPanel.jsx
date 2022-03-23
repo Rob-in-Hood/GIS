@@ -12,6 +12,7 @@ export const LayersPanel = (props) => {
 	const accItems = [
 		{
 			name: 'Загруженные с устройства',
+			tooltip: 'Слои, загруженные с Вашего устройства',
 			notCompleted: true,
 			content: (
 				<ContentComponents.DeviceLayersContent></ContentComponents.DeviceLayersContent>
@@ -19,6 +20,7 @@ export const LayersPanel = (props) => {
 		},
 		{
 			name: 'Загруженные из профиля',
+			tooltip: 'Слои, загруженные из Вашего профиля',
 			notCompleted: true,
 			content: (
 				<ContentComponents.AccountLayersContent></ContentComponents.AccountLayersContent>
@@ -26,6 +28,7 @@ export const LayersPanel = (props) => {
 		},
 		{
 			name: 'Нарисованные',
+			tooltip: 'Нарисованные в текущей сессии слои',
 			notCompleted: true,
 			content: (
 				<ContentComponents.DrawingLayersContent></ContentComponents.DrawingLayersContent>
@@ -33,6 +36,7 @@ export const LayersPanel = (props) => {
 		},
 		{
 			name: 'Измерительные',
+			tooltip: 'Измерительные слои, добавленные в текущей сессии',
 			notCompleted: true,
 			content: (
 				<ContentComponents.MeasuringLayersContent></ContentComponents.MeasuringLayersContent>
@@ -57,6 +61,8 @@ export const LayersPanel = (props) => {
 						name={item.name}
 						notCompleted={item.notCompleted}
 						accHeightSubtrahend={accHeightSubtrahend}
+						dataTooltip={item.tooltip}
+						dataTooltipLocation='left'
 					>
 						{item.content}
 					</AccordionItem>

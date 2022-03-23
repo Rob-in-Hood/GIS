@@ -12,11 +12,13 @@ export const ToolsPanel = (props) => {
 	const accItems = [
 		{
 			name: 'Карты',
+			tooltip: 'Смена основного слоя карты',
 			notCompleted: false,
 			content: <ContentComponents.MapsContent></ContentComponents.MapsContent>,
 		},
 		{
 			name: 'Погода',
+			tooltip: 'Отображение погодных слоев',
 			notCompleted: false,
 			content: (
 				<ContentComponents.WeatherContent></ContentComponents.WeatherContent>
@@ -24,6 +26,7 @@ export const ToolsPanel = (props) => {
 		},
 		{
 			name: 'Скачать',
+			tooltip: 'Скачивание карты',
 			notCompleted: true,
 			content: (
 				<ContentComponents.DownloadingContent></ContentComponents.DownloadingContent>
@@ -31,6 +34,7 @@ export const ToolsPanel = (props) => {
 		},
 		{
 			name: 'Рисование',
+			tooltip: 'Добавление слоя рисования на карту',
 			notCompleted: true,
 			content: (
 				<ContentComponents.DrawingContent></ContentComponents.DrawingContent>
@@ -38,6 +42,7 @@ export const ToolsPanel = (props) => {
 		},
 		{
 			name: 'Измерение',
+			tooltip: 'Добавление слоя измерения на карту',
 			notCompleted: true,
 			content: (
 				<ContentComponents.MeasuringContent></ContentComponents.MeasuringContent>
@@ -45,6 +50,7 @@ export const ToolsPanel = (props) => {
 		},
 		{
 			name: 'Печать',
+			tooltip: 'Печать карты',
 			notCompleted: true,
 			content: (
 				<ContentComponents.PrintingContent></ContentComponents.PrintingContent>
@@ -69,6 +75,8 @@ export const ToolsPanel = (props) => {
 						name={item.name}
 						notCompleted={item.notCompleted}
 						accHeightSubtrahend={accHeightSubtrahend}
+						dataTooltip={item.tooltip}
+						dataTooltipLocation='right'
 					>
 						{item.content}
 					</AccordionItem>

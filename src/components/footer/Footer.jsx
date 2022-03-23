@@ -90,6 +90,8 @@ export const Footer = (props) => {
 				bordered={false}
 				className='middle-column'
 				onClick={closeFooter}
+				data-tooltip='Свернуть'
+				data-tooltip-location='top'
 			></IconButton>
 			<RightColumn className='right-column'>
 				<ToggleButton
@@ -97,12 +99,16 @@ export const Footer = (props) => {
 					onIcon={faGlobe}
 					offFunc={setDecimalFormat}
 					onFunc={setDMSFormat}
+					dataTooltip='Сменить формат координат'
+					dataTooltipLocation='left'
 				></ToggleButton>
 				<ToggleButton
 					offIcon={faExpand}
 					onIcon={faCompress}
 					offFunc={exitFullScreenMode}
 					onFunc={setFullScreenMode}
+					dataTooltip='Полноэкранный режим'
+					dataTooltipLocation='left'
 				></ToggleButton>
 			</RightColumn>
 		</HeaderFooterContainer>

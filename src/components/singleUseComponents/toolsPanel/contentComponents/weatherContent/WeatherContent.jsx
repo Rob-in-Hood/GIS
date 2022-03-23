@@ -100,21 +100,35 @@ export const WeatherContent = () => {
 	return (
 		<WeatherContentContainer>
 			<WeatherContentItemContainer>
-				<Range setValue={setWindLayerOpacity} initValue={windOpacity}></Range>
+				<Range
+					setValue={setWindLayerOpacity}
+					initValue={windOpacity}
+					dataTooltip='Прозрачность'
+					dataTooltipLocation='top'
+				></Range>
 				<ToggleButton
 					offIcon={faWind}
 					onIcon={faWind}
 					offFunc={setWindOff}
 					onFunc={setWindOn}
+					dataTooltip='Ветер'
+					dataTooltipLocation='top'
 				></ToggleButton>
 			</WeatherContentItemContainer>
 			<WeatherContentItemContainer>
-				<Range setValue={setTempLayerOpacity} initValue={tempOpacity}></Range>
+				<Range
+					setValue={setTempLayerOpacity}
+					initValue={tempOpacity}
+					dataTooltip='Прозрачность'
+					dataTooltipLocation='top'
+				></Range>
 				<ToggleButton
 					offIcon={faTemperatureHigh}
 					onIcon={faTemperatureLow}
 					offFunc={setTempOff}
 					onFunc={setTempOn}
+					dataTooltip='Температура'
+					dataTooltipLocation='top'
 				></ToggleButton>
 			</WeatherContentItemContainer>
 		</WeatherContentContainer>
