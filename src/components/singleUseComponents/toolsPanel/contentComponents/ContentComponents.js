@@ -1,4 +1,4 @@
-import { MapsContent } from './MapsContent';
+import { MapsContent } from './mapsContent/MapsContent';
 import { WeatherContent } from './weatherContent/WeatherContent';
 import { DownloadingContent } from './DownloadingContent';
 import { DrawingContent } from './DrawingContent';

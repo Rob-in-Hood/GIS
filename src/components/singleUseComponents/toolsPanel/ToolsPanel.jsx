@@ -12,7 +12,7 @@ export const ToolsPanel = (props) => {
 	const accItems = [
 		{
 			name: 'Карты',
-			notCompleted: true,
+			notCompleted: false,
 			content: <ContentComponents.MapsContent></ContentComponents.MapsContent>,
 		},
 		{
