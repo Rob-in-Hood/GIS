@@ -2,6 +2,7 @@ import styled, { css } from 'styled-components';
 
 export const StickyCloseablePanelContainer = styled.div`
 	position: absolute;
+	will-change: transform, background-color;
 	${(props) =>
 		(props.topSticky || props.bottomSticky) &&
 		css`

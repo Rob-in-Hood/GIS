@@ -4,7 +4,6 @@ export const AppContainer = styled.div`
 	& * {
 		font-family: ${(props) => props.theme.fonts[1]};
 		font-variation-settings: 'wght' 500;
-		will-change: top;
 	}
 
 	& .not-completed:hover {
