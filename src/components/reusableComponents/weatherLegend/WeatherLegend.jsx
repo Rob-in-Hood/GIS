@@ -8,7 +8,10 @@ import {
 
 export const WeatherLegend = (props) => {
 	return (
-		<WeatherLegendContainer>
+		<WeatherLegendContainer
+			data-tooltip={props.dataTooltip}
+			data-tooltip-location={props.dataTooltipLocation}
+		>
 			<WeatherLegendLabels arrayLength={props.labels.length}>
 				{props.labels.map((item) => (
 					<li key={item}>{item}</li>

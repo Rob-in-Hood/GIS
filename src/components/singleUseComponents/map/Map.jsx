@@ -94,12 +94,16 @@ export const Map = () => {
 					<WeatherLegend
 						backgroundImage={theme.weatherBackground.wind}
 						labels={weatherData.WIND_LEGEND_LABELS}
+						dataTooltip='Ветер, м/с'
+						dataTooltipLocation='left'
 					></WeatherLegend>
 				)}
 				{tempLayer && (
 					<WeatherLegend
 						backgroundImage={theme.weatherBackground.temp}
 						labels={weatherData.TEMP_LEGEND_LABELS}
+						dataTooltip='Температура, °C'
+						dataTooltipLocation='left'
 					></WeatherLegend>
 				)}
 			</WeatherLegendsContainer>

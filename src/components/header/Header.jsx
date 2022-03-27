@@ -71,15 +71,31 @@ export const Header = () => {
 					bordered={true}
 					className='left-column'
 					onClick={onClickToolsBtn}
+					data-tooltip='Панель инструментов'
+					data-tooltip-location='right'
 				/>
 				<MiddleColumn className='middle-column'>
-					<IconButton icon={faUser} bordered={true}></IconButton>
+					<IconButton
+						icon={faUser}
+						bordered={true}
+						className='not-completed'
+						data-tooltip='Авторизация'
+						data-tooltip-location='bottom'
+					></IconButton>
 					<IconButton
 						icon={faAngleUp}
 						bordered={false}
 						onClick={closeHeader}
+						data-tooltip='Свернуть'
+						data-tooltip-location='bottom'
 					></IconButton>
-					<IconButton icon={faUpload} bordered={true}></IconButton>
+					<IconButton
+						icon={faUpload}
+						bordered={true}
+						className='not-completed'
+						data-tooltip='Загрузка слоев с устройства'
+						data-tooltip-location='bottom'
+					></IconButton>
 				</MiddleColumn>
 				<IconTextButton
 					text='Слои'
@@ -87,6 +103,8 @@ export const Header = () => {
 					bordered={true}
 					className='right-column'
 					onClick={onClickLayersBtn}
+					data-tooltip='Панель управления слоями'
+					data-tooltip-location='left'
 				/>
 			</HeaderFooterContainer>
 			<ToolsPanel

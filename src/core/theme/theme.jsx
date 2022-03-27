@@ -3,9 +3,9 @@ import { ThemeProvider } from 'styled-components';
 
 export const theme = {
 	colors: {
-		primary: `white`,
+		primary: `#fff`,
 		secondary: `#e2dce7`,
-		accent: `black`,
+		accent: `#000`,
 	},
 	fonts: ['sans-serif', 'Jura'],
 	fontSizes: {
@@ -24,13 +24,14 @@ export const theme = {
 		layersPanel: 400,
 	},
 	transitionDelay: 0.7,
+	tooltipArrowSize: '5px',
 	get notCompletedBackground() {
 		return `repeating-linear-gradient(
 			135deg,
 			${this.colors.secondary},
-			${this.colors.secondary} 6px,
-			transparent 6px,
-			transparent 16px
+			${this.colors.secondary} 5px,
+			transparent 5px,
+			transparent 14px
 		)`;
 	},
 	weatherBackground: {

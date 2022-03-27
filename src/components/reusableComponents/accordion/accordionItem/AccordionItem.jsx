@@ -7,6 +7,8 @@ export const AccordionItem = (props) => {
 			<ItemButton
 				className={props.notCompleted ? 'not-completed' : ''}
 				onClick={props.onClick}
+				data-tooltip={props.dataTooltip}
+				data-tooltip-location={props.dataTooltipLocation}
 			>
 				{props.name}
 			</ItemButton>

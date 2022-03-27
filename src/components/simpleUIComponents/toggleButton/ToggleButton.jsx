@@ -14,7 +14,12 @@ export const ToggleButton = (props) => {
 	};
 
 	return (
-		<Toggle className={`${onOffClass}`} onClick={onClick}>
+		<Toggle
+			className={`${onOffClass}`}
+			onClick={onClick}
+			data-tooltip={props.dataTooltip}
+			data-tooltip-location={props.dataTooltipLocation}
+		>
 			<Switch className={`${onOffClass}`}>
 				<FontAwesomeIcon
 					icon={onOffClass === classes.OFF ? props.offIcon : props.onIcon}
